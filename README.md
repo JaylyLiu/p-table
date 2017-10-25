@@ -17,5 +17,10 @@ $ polymer serve
 ```
 $ polymer test
 ```
+## Notice
+
+```
+dom-repeat not work with the first way of table elements
+```
 
 Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
