@@ -1,4 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
+
 
 <dom-module id="p-table">
   <template>
@@ -6,26 +8,82 @@
       :host {
         display: block;
       }
+      
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <dom-repeat items="{{data}}">
+
+    </dom-repeat>
+
+    <table border="1">
+      <thead>
+        <div class="connnn">
+          <tr>
+            <dom-repeat items="{{data.head}}" as="th">
+              <template>
+                <th>{{th}}</th>
+              </template>
+            </dom-repeat>
+          </tr>
+      </thead>
+      <tbody>
+        <dom-repeat  items="{{data.body}}" as="tr" >
+          <template>
+            <tr>
+              <dom-repeat items="{{tr}}"  as="td">
+                <template>
+                  <td>
+                    {{td}}
+                  </td>
+                </template>                
+              </dom-repeat>
+
+            </tr>
+          </template>          
+        </dom-repeat>
+
+      </tbody>
+      </div>
+    </table>
+
+    <table border="1">
+      <thead>
+        <div class="connnn">
+          <tr>
+            <template items="{{data.head}}" as="th" is="dom-repeat">
+              <th>{{th}}</th>
+            </template>
+          </tr>
+      </thead>
+      <tbody>
+        <template items="{{data.body}}" as="tr" is="dom-repeat">
+          <tr>
+            <template is="dom-repeat" items="{{tr}}" as="td">
+              <td>
+                {{td}}
+              </td>
+            </template>
+          </tr>
+        </template>
+      </tbody>
+      </div>
+    </table>
   </template>
 
   <script>
-    /**
-     * `p-table`
-     * 
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
+
     class PTable extends Polymer.Element {
       static get is() { return 'p-table'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'p-table'
+          data: {
+            type: Object,
+            notify: true,
+            value: {head: ['AAA','BBB'], body: [['aaa','111'],['bbb','222']]}
+          },
+          tr: {
+            type: Object,
+            observer: 'tt',
+            value: [{type: 'element',val: "<p>Jayly</p>"}, {type: 'element2', val: "<basic-button></basic-button>"}, {type: 'element3', show: 'none'}]
           }
         };
       }
