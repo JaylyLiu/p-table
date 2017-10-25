@@ -1,0 +1,36 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<dom-module id="p-table">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `p-table`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PTable extends Polymer.Element {
+      static get is() { return 'p-table'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'p-table'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PTable.is, PTable);
+  </script>
+</dom-module>
